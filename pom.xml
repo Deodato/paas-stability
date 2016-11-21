@@ -55,7 +55,7 @@
                                 </goals>
                                 <configuration>
                                     <failOnError>true</failOnError>
-                                    <simulationClass>com.stratio.tests.kafka.KafkaSimulation</simulationClass>
+                                    <simulationClass>com.stratio.tests.kafka.KafkaSimulationData</simulationClass>
                                     <configFolder>src/test/resources</configFolder>
                                     <dataFolder>src/test/resources</dataFolder>
                                     <resultsFolder>target/gatling/results</resultsFolder>
