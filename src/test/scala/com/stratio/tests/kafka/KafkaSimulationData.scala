@@ -11,7 +11,7 @@ import scala.concurrent.duration._
 
 class KafkaSimulationData extends PerformanceTestData {
     feederAssoc.records.foreach(fA => {
-    scns += scenario(fA.get("TOPIC").get)
+    producerScns += scenario(fA.get("TOPIC").get)
       .exec(flattenMapIntoAttributes(fA))
       .exec(Prod.produceData)
     }
@@ -24,13 +24,13 @@ class KafkaSimulationData extends PerformanceTestData {
   }
   )
 
-  logger.info("Scenarios size: {}",scns.size )
-  if (scns.size < 1) {
+  logger.info("Scenarios size: {}",producerScns.size )
+  if (producerScns.size < 1) {
     throw new AssertionError("No scenarios")
   }
 
   setUp(
-      scns.toList.map(_.inject(rampUsers(users) over injectDuration)) ::: consumerScns.toList.map(_.inject(rampUsers(1) over injectDuration)))
+    producerScns.toList.map(_.inject(rampUsers(users) over injectDuration)) ::: consumerScns.toList.map(_.inject(rampUsers(1) over injectDuration)))
     .maxDuration(runDuration minutes)
     .assertions(
         global.responseTime.max.lessThan(3000),
@@ -92,7 +92,7 @@ trait PerformanceTestData extends Simulation with HeadersData {
   val produceDuration = (runDuration - 1)
   val REST_PROXY = System.getProperty("REST_PROXY", "127.0.0.1")
 
-  val scns = new ListBuffer[ScenarioBuilder]()
+  val producerScns = new ListBuffer[ScenarioBuilder]()
   val consumerScns = new ListBuffer[ScenarioBuilder]()
 }
 
