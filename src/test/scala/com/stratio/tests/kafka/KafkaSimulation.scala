@@ -33,7 +33,7 @@ class KafkaSimulation extends PerformanceTestData {
     producerScns.toList.map(_.inject(rampUsers(users) over injectDuration)) ::: consumerScns.toList.map(_.inject(rampUsers(1) over injectDuration)))
     .maxDuration(runDuration minutes)
     .assertions(
-      global.responseTime.max.lessThan(3000),
+//      global.responseTime.max.lessThan(3000),
       global.successfulRequests.percent.greaterThan(95)
     )
 }
