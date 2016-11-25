@@ -61,22 +61,5 @@ trait PerformanceTestAPI extends Simulation with Headers {
       }
   }
 
-  object Cons extends Urls {
-    val consumeMessage =
-      forever {
-        pause(5)
-          .exec(
-            http("POST /consumer")
-              .post(HTTPcreateConsumer)
-              .body(ElFileBody("src/test/resources/data/createConsumer.txt")).asJSON
-              .header(contentType, contentTypeValue))
-          .pause(5)
-          .exec(http("GET /data")
-            .get(HTTPobtainMsg)
-            .header("Accept", contentTypeValue)
-            .check(regex("offset").findAll.exists))
-      }
-  }
-
   val scns = new ListBuffer[ScenarioBuilder]()
 }
