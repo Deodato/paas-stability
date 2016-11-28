@@ -55,26 +55,10 @@
                                 </goals>
                                 <configuration>
                                     <failOnError>true</failOnError>
-                                    <!--<simulationClass>com.stratio.tests.kafka.KafkaSimulation</simulationClass>-->
                                     <simulationClass>com.stratio.tests.kafka.KafkaSimulationData</simulationClass>
                                     <configFolder>src/test/resources</configFolder>
                                     <dataFolder>src/test/resources</dataFolder>
                                     <resultsFolder>target/gatling/results</resultsFolder>
-                                    <!--<bodiesFolder>src/test/resources/request-bodies</bodiesFolder>-->
-                                    <!--<simulationsFolder>src/test/com/stratio/tests/kafka</simulationsFolder>-->
-                                    <!--<excludes> -->
-                                    <!--<exclude>advanced/*.scala</exclude> -->
-                                    <!--<exclude>basic/*.scala</exclude> -->
-                                    <!--</excludes> -->
-                                    <!-- <noReports>false</noReports> -->
-                                    <!-- <reportsOnly>directoryName</reportsOnly> -->
-                                    <!-- <simulationClass>foo.Bar</simulationClass> -->
-                                    <!-- <jvmArgs> -->
-                                    <!-- <jvmArg>-DmyExtraParam=foo</jvmArg> -->
-                                    <!-- </jvmArgs> -->
-                                    <!-- <fork>true</fork> -->
-                                    <!-- <propagateSystemProperties>true</propagateSystemProperties> -->
-                                    <!-- <failOnError>true</failOnError> -->
                                 </configuration>
                             </execution>
                         </executions>
@@ -105,19 +89,6 @@
                                     <resultsFolder>target/gatling/results</resultsFolder>
                                     <bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
                                     <simulationsFolder>src/test/com/stratio/tests/zookeeper</simulationsFolder>
-                                    <!--<excludes> -->
-                                    <!--<exclude>advanced/*.scala</exclude> -->
-                                    <!--<exclude>basic/*.scala</exclude> -->
-                                    <!--</excludes> -->
-                                    <!-- <noReports>false</noReports> -->
-                                    <!-- <reportsOnly>directoryName</reportsOnly> -->
-                                    <!-- <simulationClass>foo.Bar</simulationClass> -->
-                                    <!-- <jvmArgs> -->
-                                    <!-- <jvmArg>-DmyExtraParam=foo</jvmArg> -->
-                                    <!-- </jvmArgs> -->
-                                    <!-- <fork>true</fork> -->
-                                    <!-- <propagateSystemProperties>true</propagateSystemProperties> -->
-                                    <!-- <failOnError>true</failOnError> -->
                                 </configuration>
                             </execution>
                         </executions>
@@ -148,19 +119,36 @@
                                     <resultsFolder>target/gatling/results</resultsFolder>
                                     <bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
                                     <simulationsFolder>src/test/com/stratio/tests/spark</simulationsFolder>
-                                    <!--<excludes> -->
-                                    <!--<exclude>advanced/*.scala</exclude> -->
-                                    <!--<exclude>basic/*.scala</exclude> -->
-                                    <!--</excludes> -->
-                                    <!-- <noReports>false</noReports> -->
-                                    <!-- <reportsOnly>directoryName</reportsOnly> -->
-                                    <!-- <simulationClass>foo.Bar</simulationClass> -->
-                                    <!-- <jvmArgs> -->
-                                    <!-- <jvmArg>-DmyExtraParam=foo</jvmArg> -->
-                                    <!-- </jvmArgs> -->
-                                    <!-- <fork>true</fork> -->
-                                    <!-- <propagateSystemProperties>true</propagateSystemProperties> -->
-                                    <!-- <failOnError>true</failOnError> -->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>VIEWER</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.gatling</groupId>
+                        <artifactId>gatling-maven-plugin</artifactId>
+                        <version>${gatling-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>Spark</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnError>true</failOnError>
+                                    <simulationClass>com.stratio.tests.viewer.viewerSimulation</simulationClass>
+                                    <configFolder>src/test/resources</configFolder>
+                                    <dataFolder>src/test/resources/data</dataFolder>
+                                    <resultsFolder>target/gatling/results</resultsFolder>
+                                    <bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
+                                    <simulationsFolder>src/test/com/stratio/tests/viewer</simulationsFolder>
                                 </configuration>
                             </execution>
                         </executions>

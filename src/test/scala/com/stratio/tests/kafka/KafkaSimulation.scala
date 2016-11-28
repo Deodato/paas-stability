@@ -57,7 +57,7 @@ trait PerformanceTest extends Simulation with Headers {
           .exec(
             http("POST /data")
               .post(HTTPproducer)
-              .body(ElFileBody("src/test/resources/data/producerBody.txt")).asJSON
+              .body(ElFileBody("src/test/resources/data/kafka/producerBody.txt")).asJSON
               .header(contentType, contentTypeValue)
               .check(jsonPath("$.offsets..offset"))
           )
@@ -75,7 +75,7 @@ trait PerformanceTest extends Simulation with Headers {
           .exec(
             http("POST /consumer")
               .post(HTTPcreateConsumer)
-              .body(ElFileBody("src/test/resources/data/createConsumer.txt")).asJSON
+              .body(ElFileBody("src/test/resources/data/kafka/createConsumer.txt")).asJSON
               .header(contentType, contentTypeValue))
           .pause(5)
           .exec(http("GET /data")
@@ -86,7 +86,7 @@ trait PerformanceTest extends Simulation with Headers {
   }
 
 
-  val feederAssoc = csv("topicList.csv")
+  val feederAssoc = csv("src/test/resources/data/kafka/topicList.csv")
 
   val users = Integer.parseInt(System.getProperty("users", "1"))
   val injectDuration = Integer.parseInt(System.getProperty("injectD", "1"))
