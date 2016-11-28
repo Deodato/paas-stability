@@ -136,7 +136,7 @@
                         <version>${gatling-maven-plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>Spark</id>
+                                <id>Viewer</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>execute</goal>
