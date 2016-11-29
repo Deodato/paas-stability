@@ -10,7 +10,7 @@ trait PerformanceTest extends Simulation with Common {
 
     val auth = http("POST /login/authenticate/userpass")
       .post("/login/authenticate/userpass")
-      .body(ElFileBody("AUTH.txt")).asJSON
+      .body(ElFileBody("src/test/resources/data/viewer/AUTH.txt")).asJSON
   }
 
   object Data {
