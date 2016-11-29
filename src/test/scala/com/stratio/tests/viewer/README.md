@@ -24,17 +24,19 @@ IMPORTANT: By default Viewer configuration only get 250 entries in the getData a
 
 ### Environment variables
 
-To set custom variables use as follows:
+These are the environment variables that can be used to run simulation:
 
-- users     = define the number of users to perform simulation steps.
-- injectD   = defines the user injection ramp.
-- runD      = defines running duration.
-- URL       = defines where Viewer instance is running.
+- **users**     = define the number of users to perform simulation steps.
+- **injectD**   = defines the user injection ramp.
+- **runD**      = defines running duration.
+- **URL**       = defines where Viewer instance is running.
+- **PORT**      = defines the port of Viewer instance.
+- **PROTOCOL**  = http or https. **http by default**.
 
 ### Run performance test
 
 To run Viewer performance test against Crossdata DataSource defined within the associationId.csv feeder you should run the following command:
 
 ```sh
-$ mvn test -PVIEWER -Dusers=1 -DinjectD=1 -DrunD=1 -DURL=127.0.0.1
+$ mvn test -PVIEWER -Dusers=1 -DinjectD=1 -DrunD=1 -DURL=127.0.0.1 -DPORT=9000 -DPROTOCOL=http
 ```

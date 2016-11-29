@@ -13,8 +13,10 @@ trait Common {
 
   def logger = LoggerFactory.getLogger(this.getClass)
 
+  val protocol = System.getProperty("PROTOCOL", "http")
+  val port = System.getProperty("PORT", "9000")
   val url = System.getProperty("URL", "127.0.0.1")
-  val sut = s"http://${url}:9000/api"
+  val sut = s"${protocol}://${url}:${port}/api"
 
   val httpConf = http
     .baseURL(sut)
@@ -33,6 +35,7 @@ trait Common {
   val users = Integer.parseInt(System.getProperty("users", "1"))
   val injectDuration = Integer.parseInt(System.getProperty("injectD", "1"))
   val runDuration = Integer.parseInt(System.getProperty("runD", "1"))
+
 
   val scns = new ListBuffer[ScenarioBuilder]()
 }
