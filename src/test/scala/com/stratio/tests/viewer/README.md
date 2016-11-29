@@ -20,6 +20,8 @@ Manual configuration should be performed before running simulation:
 
 This file will be used as the feeder for the rest of the scripts to run the performance tests.
 
+IMPORTANT: By default Viewer configuration only get 250 entries in the getData action. It is recommended to upgrade this value in setting/configuration menu.
+
 ### Environment variables
 
 To set custom variables use as follows:
