@@ -13,7 +13,7 @@ One maven profile has been created to run Stratio Crossdata performance tests. (
 
 Manual configuration should be performed before running simulation:
 
-- Get users, passwords and queries to execute in the simulation[crossdatafeeder.csv](https://github.com/Stratio/paas-stability/blob/branch/src/test/resources/data/crossdata/crossdatafeeder.csv).
+- Get users, passwords and queries to execute in the simulation [crossdatafeeder.csv](https://github.com/Stratio/paas-stability/blob/branch/src/test/resources/data/crossdata/crossdatafeeder.csv).
 
 This file will be used as the feeder for the rest of the scripts to run the performance tests.
 
