@@ -22,6 +22,7 @@
         <gatling-maven-plugin.version>2.2.0</gatling-maven-plugin.version>
         <gatling.version>2.2.3</gatling.version>
         <scala-maven-plugin.version>2.2.3</scala-maven-plugin.version>
+        <crossdata.version>1.8.0-SNAPSHOT</crossdata.version>
     </properties>
 
     <build>
@@ -156,6 +157,36 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>CROSSDATA</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.gatling</groupId>
+                        <artifactId>gatling-maven-plugin</artifactId>
+                        <version>${gatling-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>Crossdata</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <configuration>
+                                    <failOnError>true</failOnError>
+                                    <simulationClass>com.stratio.tests.crossdata.CrossdataSimulation</simulationClass>
+                                    <configFolder>src/test/resources</configFolder>
+                                    <dataFolder>src/test/resources/data/crossdata</dataFolder>
+                                    <resultsFolder>target/gatling/results/crossdata</resultsFolder>
+                                    <bodiesFolder>src/test/resources/request-bodies</bodiesFolder>
+                                    <simulationsFolder>src/com/stratio/tests/crossdata</simulationsFolder>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
     <dependencies>
         <dependency>
@@ -183,6 +214,11 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>2.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.crossdata</groupId>
+            <artifactId>crossdata-mesosphere-driver_2.11</artifactId>
+            <version>${crossdata.version}</version>
         </dependency>
     </dependencies>
 </project>

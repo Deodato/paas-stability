@@ -1,0 +1,2 @@
+user,password, query
+user1, user1, SELECT * FROM table
